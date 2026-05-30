@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Message from './Message';
 
 const Random = () => {
@@ -6,6 +6,10 @@ const Random = () => {
     const [product,setProduct] = useState([])
     const [image,setImage] = useState(null)
     const [count,setCount]=useState(0);
+
+    useEffect(() =>{
+      getProduct()
+    },[])
 
     const getProduct = async() => {
       
@@ -16,7 +20,7 @@ const Random = () => {
             const randomNum = Math.floor(Math.random()*data.length)
             
             const randomProduct = data[randomNum]
-            
+
             setProduct(randomProduct.title)
             setImage(randomProduct.image)
 
